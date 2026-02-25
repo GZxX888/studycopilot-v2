@@ -1,6 +1,8 @@
+
+from __future__ import annotations
+
 # ===== 标准库 =====
-from typing import List
-import re
+from typing import List, Dict, Any
 
 # ===== LangChain =====
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -75,7 +77,7 @@ def remove_progressive_slides(docs: List[Document]) -> List[Document]:
 # 3) 去重（完全相同文本）
 # ============================================================
 def deduplicate_docs(docs: List[Document]) -> List[Document]:
-    unique = []
+    unique: List[Document] = []
     seen = set()
     for d in docs:
         t = d.page_content.strip()
@@ -119,30 +121,36 @@ def semantic_chunk_pages(
     return out
 
 
-def ingest_documents(cfg: RAGConfig) -> None:
+def ingest_documents(cfg: RAGConfig) -> Dict[str, Any]:
+    """
+    Ingest pipeline:
+    - load docs from cfg.data_dir
+    - clean/filter/dedup
+    - semantic chunking
+    - embed + persist to Chroma (collection_name="studycopilot")
+
+    Returns stats for UI / logging.
+    """
     # ---------- 1) load ----------
     docs: List[Document] = load_documents_from_dir(cfg.data_dir)
     if not docs:
         raise RuntimeError("No documents found in data directory.")
 
-    print(f"Original pages: {len(docs)}")
+    original_pages = len(docs)
 
     # ---------- 2) remove progressive ----------
     docs = remove_progressive_slides(docs)
-    print(f"After removing progressive slides: {len(docs)}")
+    after_progressive = len(docs)
 
     # ---------- 3) low-info filter (page-level) ----------
     docs = [d for d in docs if not is_low_information_chunk(d.page_content)]
-    print(f"After low-information filtering: {len(docs)}")
+    after_low_info = len(docs)
 
     # ---------- 4) dedup ----------
     docs = deduplicate_docs(docs)
-    print(f"After deduplication: {len(docs)}")
+    after_dedup = len(docs)
 
     # ---------- 5) semantic chunking (page-internal) ----------
-    # 你可以根据课件实际长度调：
-    # - max_page_chars：超过这个长度才拆
-    # - chunk_size / overlap：拆分粒度
     max_page_chars = 1800
     chunk_size = getattr(cfg, "chunk_size", 800)
     chunk_overlap = getattr(cfg, "chunk_overlap", 120)
@@ -153,7 +161,7 @@ def ingest_documents(cfg: RAGConfig) -> None:
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
     )
-    print(f"After semantic chunking: {len(chunks)}")
+    final_chunks = len(chunks)
 
     # ---------- 6) Embeddings (normalize) ----------
     embeddings = HuggingFaceEmbeddings(
@@ -170,11 +178,35 @@ def ingest_documents(cfg: RAGConfig) -> None:
         collection_name="studycopilot",
     )
 
-    print("\n✅ Ingest finished")
-    print(f"- Final Chunks: {len(chunks)}")
-    print(f"- VectorDB path: {cfg.vectordb_dir}")
+    return {
+        "original_pages": original_pages,
+        "after_progressive": after_progressive,
+        "after_low_information": after_low_info,
+        "after_deduplication": after_dedup,
+        "after_semantic_chunking": final_chunks,
+        "final_chunks": final_chunks,
+        "vectordb_path": str(cfg.vectordb_dir),
+        "collection": "studycopilot",
+    }
+
+
+def run_ingest(cfg: RAGConfig | None = None) -> Dict[str, Any]:
+    """
+    Streamlit-callable entry.
+    Returns stats dict.
+    """
+    cfg = cfg or RAGConfig()
+    stats = ingest_documents(cfg)
+    return stats
 
 
 if __name__ == "__main__":
-    cfg = RAGConfig()
-    ingest_documents(cfg)
+    out = run_ingest()
+    print(f"Original pages: {out['original_pages']}")
+    print(f"After removing progressive slides: {out['after_progressive']}")
+    print(f"After low-information filtering: {out['after_low_information']}")
+    print(f"After deduplication: {out['after_deduplication']}")
+    print(f"After semantic chunking: {out['after_semantic_chunking']}")
+    print("\n✅ Ingest finished")
+    print(f"- Final Chunks: {out['final_chunks']}")
+    print(f"- VectorDB path: {out['vectordb_path']}")

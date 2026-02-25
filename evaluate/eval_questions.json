@@ -1,77 +1,123 @@
 [
   {
     "id": "Q1",
+    "type": "in_scope",
     "question": "What is a decision boundary in a neural network?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q2",
+    "type": "in_scope",
     "question": "What are weights and bias in a neuron used for?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q3",
+    "type": "in_scope",
     "question": "What is the AND gate example used to illustrate in Lecture 02?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q4",
+    "type": "in_scope",
     "question": "What does changing the bias do to a linear decision boundary?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q5",
+    "type": "in_scope",
     "question": "What is the role of an activation function in a neural network?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q6",
+    "type": "in_scope",
     "question": "What is the sigmoid activation function?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q7",
+    "type": "in_scope",
     "question": "What does horizontal scaling mean for a sigmoid function?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q8",
+    "type": "in_scope",
     "question": "What does it mean when a neural network has sufficient expressive power?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q9",
+    "type": "in_scope",
     "question": "What is the goal of training a neural network?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
     "id": "Q10",
+    "type": "in_scope",
     "question": "What is the learning rate used for in gradient-based optimization?",
-    "should_answer": true
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
-  "id": "Q11",
-  "question": "Why is it difficult to visualize a decision boundary in four-dimensional space?",
-  "should_answer": true
+    "id": "Q11",
+    "type": "in_scope",
+    "question": "Why is it difficult to visualize a decision boundary in four-dimensional space?",
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
-  "id": "Q12",
-  "question": "How does changing the learning rate affect gradient-based optimization?",
-  "should_answer": true
+    "id": "Q12",
+    "type": "in_scope",
+    "question": "How does changing the learning rate affect gradient-based optimization?",
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
-  "id": "Q13",
-  "question": "What is the relationship between loss function, gradient, and parameter update in neural network training?",
-  "should_answer": true
+    "id": "Q13",
+    "type": "in_scope",
+    "question": "What is the relationship between loss function, gradient, and parameter update in neural network training?",
+    "should_answer": true,
+    "expected_refusal": false
   },
   {
-  "id": "Q14",
-  "question": "What does the AND gate example demonstrate about linear separability?",
-  "should_answer": true
+    "id": "Q14",
+    "type": "in_scope",
+    "question": "What does the AND gate example demonstrate about linear separability?",
+    "should_answer": true,
+    "expected_refusal": false
+  },
+
+  {
+    "id": "Q15",
+    "type": "out_of_scope",
+    "question": "What is the architecture of the ResNet-50 model discussed in the lecture slides?",
+    "should_answer": false,
+    "expected_refusal": true
+  },
+
+  {
+    "id": "Q16",
+    "type": "out_of_scope",
+    "question": "Who won the FIFA World Cup in 2022?",
+    "should_answer": false,
+    "expected_refusal": true
   },
   {
-  "id": "Q15",
-  "question": "What is the architecture of the ResNet-50 model discussed in the lecture slides?",
-  "should_answer": false
+    "id": "Q17",
+    "type": "ambiguous",
+    "question": "Explain backpropagation derivation in detail with full math steps.",
+    "should_answer": true,
+    "expected_refusal": false
   }
 ]

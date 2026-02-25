@@ -8,6 +8,10 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
+from pathlib import Path
+from typing import List, Tuple
+from langchain_core.documents import Document
+
 
 @dataclass
 class RAGConfig:
@@ -29,28 +33,42 @@ def build_retriever(cfg: RAGConfig):
     vectordb = Chroma(
         persist_directory=cfg.persist_dir,
         embedding_function=embeddings,
+        collection_name="studycopilot",  # 固定读有数据的 collection
     )
     retriever = vectordb.as_retriever(search_kwargs={"k": cfg.top_k})
     return retriever
 
 
-def format_docs(docs: List[Document], max_chars: int = 6000) -> Tuple[str, List[str]]:
-    chunks = []
+
+def format_docs(docs: List[Document]) -> Tuple[str, List[str]]:
+    """
+    Returns:
+        context_str: 拼接后的文本
+        citations:   干净的 citation 列表
+    """
+
+    context_parts = []
     citations = []
-    total = 0
 
-    for i, d in enumerate(docs, start=1):
-        src = d.metadata.get("source", "unknown")
-        page = d.metadata.get("page", d.metadata.get("page_number", "NA"))
-        cite = f"[{i}] ({src}, page {page})"
-        text = (d.page_content or "").strip()
+    for i, doc in enumerate(docs, start=1):
+        text = doc.page_content.strip()
 
-        block = f"{cite}\n{text}\n"
-        if total + len(block) > max_chars:
-            break
+        source_path = doc.metadata.get("source", "")
+        page = doc.metadata.get("page", None)
 
-        chunks.append(block)
-        citations.append(cite)
-        total += len(block)
+        filename = Path(source_path).name if source_path else "Unknown"
 
-    return "\n".join(chunks).strip(), citations
+        # 构造干净 citation
+        if page is not None:
+            citation_str = f"[{i}] {filename} (page {page})"
+        else:
+            citation_str = f"[{i}] {filename}"
+
+        citations.append(citation_str)
+
+        # 给模型用的 context
+        context_parts.append(f"[{i}]\n{text}")
+
+    context_str = "\n\n".join(context_parts)
+
+    return context_str, citations

@@ -9,6 +9,7 @@ ENV/
 
 # Vector DB (very important)
 vectordb/
+*.pdf
 
 # Streamlit
 .streamlit/

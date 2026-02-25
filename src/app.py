@@ -1,63 +1,84 @@
-# src/app.py
+
 from __future__ import annotations
 
-import os
 import streamlit as st
+from config import RAGConfig
+from agent import StudyCopilotAgent
 
-from agent import AgentConfig, StudyCopilotAgent
+
+from pathlib import Path
+import shutil
 
 
-st.set_page_config(page_title="StudyCopilot (Agent + RAG)", layout="wide")
+from ingest import run_ingest
 
-st.title("📚 StudyCopilot — Minimal Agent + RAG (Ollama)")
-st.caption("Local Ollama + Chroma vectordb + strict evidence gate")
+
+
+st.set_page_config(page_title="StudyCopilot-v2", layout="wide")
+st.title("StudyCopilot-v2 — Minimal Agent + RAG (Ollama)")
+st.caption("Config-driven: uses src/config.py (embedding / vectordb / llm)")
+
+cfg = RAGConfig()
 
 with st.sidebar:
-    st.header("Settings")
+    st.header("Current Config")
+    st.markdown("---")
+    st.subheader("Knowledge Base")
 
-    ollama_llm_model = st.text_input("Ollama LLM model", value=os.getenv("OLLAMA_LLM_MODEL", "llama3"))
-    ollama_embed_model = st.text_input(
-        "Ollama embedding model",
-        value=os.getenv("OLLAMA_EMBED_MODEL", "nomic-embed-text"),
-        help="If you don't have nomic-embed-text, install/pull it in Ollama or set to an available embedding model.",
+    uploaded_files = st.sidebar.file_uploader(
+        "Upload PDFs to data/",
+        type=["pdf"],
+        accept_multiple_files=True
     )
-    vectordb_dir = st.text_input("vectordb directory", value=os.getenv("VECTORDB_DIR", "vectordb"))
 
-    top_k = st.slider("top_k (retrieve chunks)", min_value=1, max_value=10, value=int(os.getenv("TOP_K", "4")))
-    temperature = st.slider("temperature", min_value=0.0, max_value=1.0, value=float(os.getenv("TEMP", "0.2")))
+    if uploaded_files:
+        data_dir = Path(RAGConfig().data_dir)
+        data_dir.mkdir(parents=True, exist_ok=True)
 
+        saved = 0
+        for f in uploaded_files:
+            save_path = data_dir / f.name
+            with open(save_path, "wb") as out:
+                out.write(f.getbuffer())
+            saved += 1
+
+        st.sidebar.success(f"Uploaded {saved} PDF(s) to {data_dir}")
+
+    # 一键重建按钮
+    if st.button("Rebuild Knowledge Base", type="primary"):
+        cfg = RAGConfig()
+
+        # 1) 清空 vectordb（从零重建，最稳）
+        if cfg.vectordb_dir.exists():
+            shutil.rmtree(cfg.vectordb_dir, ignore_errors=True)
+        cfg.vectordb_dir.mkdir(parents=True, exist_ok=True)
+
+        # 2) 跑 ingest
+        with st.spinner("Rebuilding VectorDB..."):
+            stats = run_ingest(cfg)
+
+        st.sidebar.success("✅ Knowledge base rebuilt!")
+
+        # 3) 重建 agent（刷新 retriever）
+        st.session_state.agent = StudyCopilotAgent(cfg)
+
+        # 4) 强制刷新页面
+        st.rerun()
+    st.write(f"**LLM:** {cfg.llm_model}")
+    st.write(f"**Embedding:** {cfg.embedding_model}")
+    st.write(f"**vectordb:** {cfg.vectordb_dir}")
+    st.write(f"**top_k:** {cfg.top_k}")
     st.divider()
-    st.write("**Run prerequisites**")
-    st.code("ollama serve\nollama pull llama3\nollama pull nomic-embed-text", language="bash")
+    if st.button("Rebuild Agent"):
+        st.session_state.agent = StudyCopilotAgent(cfg)
+        st.success("Agent rebuilt.")
 
-# lazy init agent in session
 if "agent" not in st.session_state:
-    cfg = AgentConfig(
-        ollama_llm_model=ollama_llm_model,
-        vectordb_dir=vectordb_dir,
-        ollama_embedding_model=ollama_embed_model,
-        top_k=top_k,
-        temperature=temperature,
-    )
     st.session_state.agent = StudyCopilotAgent(cfg)
-
-# if user changes settings, recreate agent
-if st.sidebar.button("Rebuild Agent"):
-    cfg = AgentConfig(
-        ollama_llm_model=ollama_llm_model,
-        vectordb_dir=vectordb_dir,
-        ollama_embedding_model=ollama_embed_model,
-        top_k=top_k,
-        temperature=temperature,
-    )
-    st.session_state.agent = StudyCopilotAgent(cfg)
-    st.success("Agent rebuilt.")
-
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# chat display
 for m in st.session_state.messages:
     with st.chat_message(m["role"]):
         st.markdown(m["content"])
@@ -68,18 +89,41 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
+    result = None  # ✅ 先定义，避免异常后引用不到
+
     with st.chat_message("assistant"):
-        with st.spinner("Thinking (Agent → Retrieve → Evidence Gate → Answer)..."):
-            result = st.session_state.agent.answer(prompt)
+        with st.spinner("Agent → Retrieve → Evidence Gate → Answer..."):
+            try:
+                result = st.session_state.agent.answer(prompt)
+                st.markdown(result["final"])
+                # ✅ 成功后立刻写入历史
+                st.session_state.messages.append({"role": "assistant", "content": result["final"]})
+            except Exception as e:
+                err = f"❌ Agent error: {type(e).__name__}: {e}"
+                st.error(err)
+                st.session_state.messages.append({"role": "assistant", "content": err})
+                st.stop()  # ✅ 不要 raise，让应用继续活着
 
-        st.markdown(result["final"])
+        if result is not None:
+            with st.expander("Debug"):
+                st.write(f"**fallback:** {result.get('fallback', True)}")
+                st.write(f"**route:** {result.get('route')}")
+                st.write(f"**docs_found:** {result.get('docs_found')}")
 
-        with st.expander("Debug (route / citations / docs_found)"):
-            st.write(f"**route:** {result['route']}")
-            st.write(f"**docs_found:** {result['docs_found']}")
-            if result["citations"]:
-                st.write("**citations:**")
-                for c in result["citations"]:
-                    st.write(c)
+                # ✅ 新增：queries_used
+                if result.get("queries_used"):
+                    st.write("**queries_used:**")
+                    for q in result["queries_used"]:
+                        st.write(f"- {q}")
 
-    st.session_state.messages.append({"role": "assistant", "content": result["final"]})
+                # ✅ 新增：planner/debug steps
+                if result.get("debug"):
+                    st.write("**planner debug (raw):**")
+                    for line in result["debug"]:
+                        st.write(line)
+
+                # 你原本的 citations 保留
+                if result.get("citations"):
+                    st.write("**citations:**")
+                    for c in result["citations"]:
+                        st.write(c)
