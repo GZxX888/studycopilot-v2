@@ -1,0 +1,33 @@
+# StudyCopilot-v2 依赖清单
+# 验证环境：Python 3.10.19 (conda) + Windows 11 + Ollama 本地服务
+# 版本为实际跑通评测的版本，如需最新版可自行放宽约束
+
+# --- LangChain 生态 ---
+langchain-core==1.2.15
+langchain-community==0.4.1
+langchain-ollama==1.0.1
+langchain-text-splitters==1.1.0
+
+# --- 向量库 ---
+# 注意：vectordb/ 目录是 chromadb 1.x 格式，用 0.4.x 打不开
+chromadb==1.5.1
+
+# --- 检索：稠密向量 + 稀疏关键词 + 重排 ---
+# sentence-transformers 经 langchain_community.embeddings.HuggingFaceEmbeddings 间接调用
+sentence-transformers==5.2.3
+rank-bm25==0.2.2
+FlashRank==0.2.10
+
+# --- 文档加载 ---
+# pypdf 经 langchain_community.document_loaders.PyPDFLoader 间接调用
+pypdf==6.7.0
+
+# --- 前端 ---
+streamlit==1.54.0
+
+# --- 说明 ---
+# 1. torch 由 sentence-transformers 自动安装。本项目 embedding 模型为
+#    all-MiniLM-L6-v2（22M 参数），LLM 推理由 Ollama 独立进程负责，
+#    因此 CPU 版 torch 已足够：
+#       pip install torch --index-url https://download.pytorch.org/whl/cpu
+# 2. LLM 不通过 pip 安装，需另行准备 Ollama 与 llama3 模型，见 README。
