@@ -14,9 +14,9 @@ from ingest import run_ingest
 
 
 
-st.set_page_config(page_title="StudyCopilot-v2", layout="wide")
-st.title("StudyCopilot-v2 — Minimal Agent + RAG (Ollama)")
-st.caption("Config-driven: uses src/config.py (embedding / vectordb / llm)")
+st.set_page_config(page_title="StudyCopilot", layout="wide")
+st.title("StudyCopilot — 本地课程知识问答")
+st.caption("混合检索 + 证据门控 · 证据不足时拒答而非编造 · 全部本地运行")
 
 cfg = RAGConfig()
 

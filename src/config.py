@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-# ✅ 永远以“项目根目录”为准：.../studycopilot-v2/
+# 永远以「项目根目录」为准
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 

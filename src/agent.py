@@ -1,6 +1,6 @@
 # src/agent.py
 """
-StudyCopilot Agent v2 - 优化架构版本
+StudyCopilot Agent — 主流程
 
 核心改进：
 1. Post-Retrieval Routing - 先检索再决定路由
