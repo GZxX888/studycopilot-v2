@@ -1,0 +1,48 @@
+{
+  "total": 17,
+  "should_answer": 15,
+  "should_refuse": 2,
+  "actually_refused": 7,
+  "refusal": {
+    "recall": 0.5,
+    "precision": 0.14285714285714285,
+    "false_refusal_rate": 0.4,
+    "accuracy": 0.5882352941176471,
+    "confusion_matrix": {
+      "tp": 1,
+      "tn": 9,
+      "fp": 6,
+      "fn": 1
+    }
+  },
+  "retrieval": {
+    "avg_docs_found": 5.647058823529412,
+    "avg_queries_used": 2.8823529411764706,
+    "success_rate": 0.9411764705882353
+  },
+  "quality": {
+    "avg_evidence_score": 81.0,
+    "answered_count": 10
+  },
+  "routing": {
+    "RAG": 16,
+    "NO_RAG": 1
+  },
+  "by_type": {
+    "in_scope": {
+      "total": 14,
+      "correct": 9,
+      "accuracy": 0.6428571428571429
+    },
+    "out_of_scope": {
+      "total": 2,
+      "correct": 1,
+      "accuracy": 0.5
+    },
+    "ambiguous": {
+      "total": 1,
+      "correct": 0,
+      "accuracy": 0.0
+    }
+  }
+}

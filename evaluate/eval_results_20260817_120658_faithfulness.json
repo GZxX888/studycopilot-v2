@@ -1,0 +1,1685 @@
+{
+  "summary": {
+    "total": 31,
+    "verdicts": {
+      "refused_hard": 6,
+      "answered": 8,
+      "hallucinated": 11,
+      "refused_soft": 6
+    },
+    "citation": {
+      "fabricated_count": 0,
+      "fabrication_rate": 0.0,
+      "fabricated_ids": []
+    },
+    "hallucination": {
+      "count": 11,
+      "ids": [
+        "Q3",
+        "Q5",
+        "Q11",
+        "Q31",
+        "Q18",
+        "Q20",
+        "Q21",
+        "Q22",
+        "Q24",
+        "Q29",
+        "Q17"
+      ],
+      "rate_all": 0.355
+    },
+    "out_of_scope": {
+      "total": 15,
+      "label_suspect": [
+        "Q23"
+      ],
+      "valid_total": 14,
+      "declined": 5,
+      "hallucinated": [
+        "Q18",
+        "Q20",
+        "Q21",
+        "Q22",
+        "Q24",
+        "Q29"
+      ],
+      "decline_rate_valid": 0.571,
+      "hallucination_rate_valid": 0.429
+    }
+  },
+  "audits": [
+    {
+      "id": "Q1",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 3,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "decision",
+            "df": 36
+          },
+          {
+            "term": "boundary",
+            "df": 38
+          },
+          {
+            "term": "network",
+            "df": 62
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 7,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.197,
+        "low_coverage_sentences": 6
+      }
+    },
+    {
+      "id": "Q2",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.667
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "bias",
+            "df": 6
+          },
+          {
+            "term": "neuron",
+            "df": 6
+          },
+          {
+            "term": "weights",
+            "df": 37
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 8,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.933,
+        "low_coverage_sentences": 0
+      }
+    },
+    {
+      "id": "Q3",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 2,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "illustrate",
+            "df": 0
+          },
+          {
+            "term": "gate",
+            "df": 12
+          },
+          {
+            "term": "lecture",
+            "df": 27
+          }
+        ],
+        "missing": [
+          "illustrate"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 1,
+        "n_denials": 0,
+        "assertions": [
+          "Based on the partial evidence provided, I can see that the AND gate example is used to illustrate the concept of setting the weights and bias of a desired decision boundary."
+        ],
+        "denials": [],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 6,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.22,
+        "low_coverage_sentences": 6
+      }
+    },
+    {
+      "id": "Q4",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 1.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "changing",
+            "df": 3
+          },
+          {
+            "term": "bias",
+            "df": 6
+          },
+          {
+            "term": "decision",
+            "df": 36
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 11,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.47,
+        "low_coverage_sentences": 5
+      }
+    },
+    {
+      "id": "Q5",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          4,
+          6
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.25
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "role",
+            "df": 0
+          },
+          {
+            "term": "network",
+            "df": 62
+          },
+          {
+            "term": "neural",
+            "df": 65
+          }
+        ],
+        "missing": [
+          "role"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 1,
+        "n_denials": 1,
+        "assertions": [
+          "Note: The context provides information about the role of activation functions in neural networks, specifically mentioning the ReLU and Sigmoid activation functions."
+        ],
+        "denials": [
+          "The role of an activation function in a neural network is to introduce non-linearity to the network, applied to hidden layers, and usually not applied to the output layer."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 4,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.804,
+        "low_coverage_sentences": 0
+      }
+    },
+    {
+      "id": "Q6",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 6,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "sigmoid",
+            "df": 51
+          },
+          {
+            "term": "activation",
+            "df": 89
+          },
+          {
+            "term": "function",
+            "df": 106
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 7,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.487,
+        "low_coverage_sentences": 4
+      }
+    },
+    {
+      "id": "Q7",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          2,
+          3
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.6
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "horizontal",
+            "df": 14
+          },
+          {
+            "term": "mean",
+            "df": 14
+          },
+          {
+            "term": "scaling",
+            "df": 18
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 5,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.588,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q8",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "expressive",
+            "df": 0
+          },
+          {
+            "term": "power",
+            "df": 0
+          },
+          {
+            "term": "sufficient",
+            "df": 2
+          }
+        ],
+        "missing": [
+          "expressive",
+          "power"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 3,
+        "assertions": [],
+        "denials": [
+          "A neural network has sufficient expressive power when it can approximate any function we care about, as stated by the Universal Approximation Theorem (UAT).",
+          "The theorem implies that a neural network can represent any function we care about, which is a fundamental property of a neural network's expressive power."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 5,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.655,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q9",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          4,
+          5
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.6
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "goal",
+            "df": 16
+          },
+          {
+            "term": "training",
+            "df": 42
+          },
+          {
+            "term": "network",
+            "df": 62
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 5,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.944,
+        "low_coverage_sentences": 0
+      }
+    },
+    {
+      "id": "Q10",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 20,
+      "citations_check": {
+        "cited": [
+          1,
+          2
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.4
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "gradient-based",
+            "df": 0
+          },
+          {
+            "term": "optimization",
+            "df": 16
+          },
+          {
+            "term": "rate",
+            "df": 31
+          }
+        ],
+        "missing": [
+          "gradient-based"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 2,
+        "assertions": [],
+        "denials": [
+          "Based on the partial evidence provided, it seems that the learning rate is a hyperparameter used in gradient-based optimization.",
+          "I must note that the evidence is not exhaustive, and there may be other aspects of the learning rate used in gradient-based optimization that are not mentioned here."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 9,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.494,
+        "low_coverage_sentences": 5
+      }
+    },
+    {
+      "id": "Q11",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 80,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "visualize",
+            "df": 0
+          },
+          {
+            "term": "four-dimensional",
+            "df": 0
+          },
+          {
+            "term": "difficult",
+            "df": 3
+          }
+        ],
+        "missing": [
+          "visualize",
+          "four-dimensional"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 2,
+        "n_denials": 0,
+        "assertions": [
+          "It is difficult to visualize a decision boundary in four-dimensional space because geometric visualization of decision boundaries are possible only for 2-dimensional or 3-dimensional data.",
+          "\" This suggests that the complexity of higher-dimensional spaces makes it challenging to visualize decision boundaries."
+        ],
+        "denials": [],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 4,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.499,
+        "low_coverage_sentences": 2
+      }
+    },
+    {
+      "id": "Q12",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          2
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.286
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "gradient-based",
+            "df": 0
+          },
+          {
+            "term": "affect",
+            "df": 1
+          },
+          {
+            "term": "changing",
+            "df": 3
+          }
+        ],
+        "missing": [
+          "gradient-based"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 4,
+        "assertions": [],
+        "denials": [
+          "Changing the learning rate can affect gradient-based optimization by influencing the magnitude of the gradient updates.",
+          "This can lead to issues with gradient-based optimization."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 10,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.469,
+        "low_coverage_sentences": 6
+      }
+    },
+    {
+      "id": "Q13",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          3,
+          6
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.5
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "relationship",
+            "df": 0
+          },
+          {
+            "term": "parameter",
+            "df": 9
+          },
+          {
+            "term": "between",
+            "df": 28
+          }
+        ],
+        "missing": [
+          "relationship"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 1,
+        "assertions": [],
+        "denials": [
+          "The relationship between loss function, gradient, and parameter update in neural network training is that the loss function is used to compute the gradient of the loss with respect to the neural netwo"
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 7,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.707,
+        "low_coverage_sentences": 0
+      }
+    },
+    {
+      "id": "Q14",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 6,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "demonstrate",
+            "df": 0
+          },
+          {
+            "term": "separability",
+            "df": 0
+          },
+          {
+            "term": "gate",
+            "df": 12
+          }
+        ],
+        "missing": [
+          "demonstrate",
+          "separability"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 3,
+        "assertions": [],
+        "denials": [
+          "The AND gate example does not directly demonstrate anything about linear separability.",
+          "However, I must emphasize that this is an indirect connection, and the AND gate example does not directly demonstrate linear separability."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 11,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.317,
+        "low_coverage_sentences": 7
+      }
+    },
+    {
+      "id": "Q31",
+      "type": "in_scope",
+      "tier": "",
+      "lang": "zh",
+      "verdict": "hallucinated",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          3,
+          8
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.25
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "感知",
+            "df": 0
+          },
+          {
+            "term": "知机",
+            "df": 0
+          },
+          {
+            "term": "机的",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "感知",
+          "知机",
+          "机的"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 1,
+        "n_denials": 0,
+        "assertions": [
+          "感知机的决策边界是直线或超平面。"
+        ],
+        "denials": [],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 3,
+        "skipped_cross_lingual": 1,
+        "mean_coverage": 0.694,
+        "low_coverage_sentences": 0
+      }
+    },
+    {
+      "id": "Q16",
+      "type": "out_of_scope",
+      "tier": "easy",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 0,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "fifa",
+            "df": 0
+          },
+          {
+            "term": "world",
+            "df": 5
+          }
+        ],
+        "missing": [
+          "fifa"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 0,
+        "assertions": [],
+        "denials": [],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": false,
+        "reason": "empty context"
+      }
+    },
+    {
+      "id": "Q18",
+      "type": "out_of_scope",
+      "tier": "easy",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 0,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "capital",
+            "df": 0
+          },
+          {
+            "term": "france",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "capital",
+          "france"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 1,
+        "n_denials": 0,
+        "assertions": [
+          "The capital of France is Paris."
+        ],
+        "denials": [],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": false,
+        "reason": "empty context"
+      }
+    },
+    {
+      "id": "Q19",
+      "type": "out_of_scope",
+      "tier": "easy",
+      "lang": "en",
+      "verdict": "refused_hard",
+      "evidence_score": 0,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "country",
+            "df": 0
+          },
+          {
+            "term": "hosted",
+            "df": 0
+          },
+          {
+            "term": "summer",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "country",
+          "hosted",
+          "summer"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 0,
+        "assertions": [],
+        "denials": [],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": false,
+        "reason": "empty context"
+      }
+    },
+    {
+      "id": "Q15",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 60,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "resnet-50",
+            "df": 0
+          },
+          {
+            "term": "slides",
+            "df": 0
+          },
+          {
+            "term": "discussed",
+            "df": 1
+          }
+        ],
+        "missing": [
+          "resnet-50",
+          "slides"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 3,
+        "assertions": [],
+        "denials": [
+          "The architecture of the ResNet-50 model is not discussed in the provided lecture slides.",
+          "The lecture slides do not mention the ResNet-50 model or its architecture."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 3,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.51,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q20",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 20,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "dropout",
+            "df": 0
+          },
+          {
+            "term": "regularization",
+            "df": 0
+          },
+          {
+            "term": "overfitting",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "dropout",
+          "regularization",
+          "overfitting"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 2,
+        "n_denials": 5,
+        "assertions": [
+          "Overfitting occurs when a model becomes too specialized to the training data and fails to generalize well to new, unseen data.",
+          "During training, the goal is to minimize the total loss, which encourages the model to find a good balance between fitting the training data and avoiding overfitting."
+        ],
+        "denials": [
+          "While it doesn't explicitly mention dropout regularization, I can try to relate the concepts to provide an answer.",
+          "Dropout regularization is a technique used to prevent overfitting in neural networks."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 16,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.189,
+        "low_coverage_sentences": 14
+      }
+    },
+    {
+      "id": "Q21",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 20,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "normalization",
+            "df": 0
+          },
+          {
+            "term": "applied",
+            "df": 2
+          },
+          {
+            "term": "layers",
+            "df": 11
+          }
+        ],
+        "missing": [
+          "normalization"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 5,
+        "n_denials": 2,
+        "assertions": [
+          "Batch normalization is a technique used in deep learning to normalize the activations of the input data at each layer.",
+          "The main idea behind batch normalization is to subtract the mean and divide by the standard deviation of the input data, effectively standardizing the input values.",
+          "Reduce internal covariate shift: By normalizing the input data, batch normalization helps to reduce the effect of changes in the input distribution over time, which can occur during training."
+        ],
+        "denials": [
+          "Based on the partial evidence provided, I don't see any direct mention of batch normalization.",
+          "While the partial evidence doesn't specifically mention batch normalization, the concepts of momentum and stochastic gradient descent (SGD) are related to the topic."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 12,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.147,
+        "low_coverage_sentences": 12
+      }
+    },
+    {
+      "id": "Q22",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 20,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "self-attention",
+            "df": 0
+          },
+          {
+            "term": "bert",
+            "df": 0
+          },
+          {
+            "term": "attention",
+            "df": 1
+          }
+        ],
+        "missing": [
+          "self-attention",
+          "bert"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 2,
+        "n_denials": 1,
+        "assertions": [
+          "Since the question is about the self-attention mechanism in BERT, I will rely on general knowledge to provide an answer.",
+          "In BERT, the self-attention mechanism computes attention weights by first computing a query, key, and value matrix for each token in the input sequence."
+        ],
+        "denials": [
+          "The self-attention mechanism in BERT is a key component of the transformer architecture, which is used in natural language processing tasks."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 9,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.117,
+        "low_coverage_sentences": 9
+      }
+    },
+    {
+      "id": "Q23",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.833
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "support",
+            "df": 1
+          },
+          {
+            "term": "machine",
+            "df": 2
+          },
+          {
+            "term": "separating",
+            "df": 7
+          }
+        ],
+        "missing": [],
+        "key_entity_absent": false
+      },
+      "assertion_check": {
+        "applicable": false,
+        "reason": "no missing entity",
+        "assertions": []
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 6,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.716,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q24",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 60,
+      "citations_check": {
+        "cited": [
+          7
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.125
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "autoencoder",
+            "df": 0
+          },
+          {
+            "term": "trained",
+            "df": 11
+          }
+        ],
+        "missing": [
+          "autoencoder"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 2,
+        "n_denials": 1,
+        "assertions": [
+          "What is an autoencoder and how is it trained?",
+          "This can be achieved by reconstructing the input and minimizing the difference between the input and the reconstructed output, which is the core idea behind autoencoders."
+        ],
+        "denials": [
+          "Note: The context does not provide specific information about autoencoders, but it provides a general framework for understanding neural networks and their training process."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 6,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.469,
+        "low_coverage_sentences": 4
+      }
+    },
+    {
+      "id": "Q25",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 90,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "generator",
+            "df": 0
+          },
+          {
+            "term": "discriminator",
+            "df": 0
+          },
+          {
+            "term": "compete",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "generator",
+          "discriminator",
+          "compete"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 0,
+        "assertions": [],
+        "denials": [],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 5,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.097,
+        "low_coverage_sentences": 5
+      }
+    },
+    {
+      "id": "Q30",
+      "type": "out_of_scope",
+      "tier": "medium",
+      "lang": "zh",
+      "verdict": "answered",
+      "evidence_score": 60,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "课程",
+            "df": 0
+          },
+          {
+            "term": "程里",
+            "df": 0
+          },
+          {
+            "term": "里讲",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "课程",
+          "程里",
+          "里讲"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 0,
+        "assertions": [],
+        "denials": [],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 4,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.341,
+        "low_coverage_sentences": 3
+      }
+    },
+    {
+      "id": "Q26",
+      "type": "out_of_scope",
+      "tier": "hard",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 55,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "slam",
+            "df": 0
+          },
+          {
+            "term": "simultaneously",
+            "df": 0
+          },
+          {
+            "term": "localizing",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "slam",
+          "simultaneously",
+          "localizing"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 3,
+        "assertions": [],
+        "denials": [
+          "SLAM (Simultaneous Localization and Mapping) is used to build a map while simultaneously localizing the robot by combining sensor data from different sources, such as LiDAR, camera, and radar, and usi",
+          "No specific formulas or examples are provided in the context, but the concept of SLAM is illustrated through the use of sensors like LiDAR, camera, and radar, and algorithms like Kalman Filter and MTR"
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 6,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.688,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q27",
+      "type": "out_of_scope",
+      "tier": "hard",
+      "lang": "en",
+      "verdict": "answered",
+      "evidence_score": 40,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "explain",
+            "df": 0
+          },
+          {
+            "term": "covered",
+            "df": 0
+          },
+          {
+            "term": "lectures",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "explain",
+          "covered",
+          "lectures"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 0,
+        "assertions": [],
+        "denials": [],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 7,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.349,
+        "low_coverage_sentences": 5
+      }
+    },
+    {
+      "id": "Q28",
+      "type": "out_of_scope",
+      "tier": "hard",
+      "lang": "en",
+      "verdict": "refused_soft",
+      "evidence_score": 50,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "percentage",
+            "df": 0
+          },
+          {
+            "term": "grade",
+            "df": 0
+          },
+          {
+            "term": "comes",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "percentage",
+          "grade",
+          "comes"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 0,
+        "n_denials": 1,
+        "assertions": [],
+        "denials": [
+          "The percentage of the final grade that comes from the exam in this course is not explicitly stated in the provided context."
+        ],
+        "is_hallucination": false
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 3,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.525,
+        "low_coverage_sentences": 1
+      }
+    },
+    {
+      "id": "Q29",
+      "type": "out_of_scope",
+      "tier": "hard",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 2,
+      "citations_check": {
+        "cited": [],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.0
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "page",
+            "df": 0
+          },
+          {
+            "term": "slides",
+            "df": 0
+          },
+          {
+            "term": "shown",
+            "df": 3
+          }
+        ],
+        "missing": [
+          "page",
+          "slides"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 1,
+        "n_denials": 3,
+        "assertions": [
+          "According to the partial evidence, the slides are related to EE5904/ME5404: Neural Networks, Lecture 02, and Xingyu Liu's course."
+        ],
+        "denials": [
+          "However, I must admit that the evidence only mentions slides from Lecture 02, but not specifically page 200.",
+          "Unfortunately, page 200 is not mentioned in the provided evidence."
+        ],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 9,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.114,
+        "low_coverage_sentences": 8
+      }
+    },
+    {
+      "id": "Q17",
+      "type": "ambiguous",
+      "tier": "",
+      "lang": "en",
+      "verdict": "hallucinated",
+      "evidence_score": 85,
+      "citations_check": {
+        "cited": [
+          3,
+          4,
+          6
+        ],
+        "fabricated": [],
+        "has_fabricated": false,
+        "citation_coverage": 0.375
+      },
+      "entity_check": {
+        "applicable": true,
+        "top_terms": [
+          {
+            "term": "explain",
+            "df": 0
+          },
+          {
+            "term": "derivation",
+            "df": 0
+          },
+          {
+            "term": "detail",
+            "df": 0
+          }
+        ],
+        "missing": [
+          "explain",
+          "derivation",
+          "detail"
+        ],
+        "key_entity_absent": true
+      },
+      "assertion_check": {
+        "applicable": true,
+        "n_assertions": 3,
+        "n_denials": 0,
+        "assertions": [
+          "The derivation of backpropagation involves applying the chain rule to the computation of gradients, which is demonstrated in the following steps.",
+          "* Example 6: [6] provides a detailed example of backpropagation for a scalar function, including the computation of gradients.",
+          "The derivation of backpropagation involves the following steps:"
+        ],
+        "denials": [],
+        "is_hallucination": true
+      },
+      "lexical_diagnostic": {
+        "applicable": true,
+        "n_sentences": 24,
+        "skipped_cross_lingual": 0,
+        "mean_coverage": 0.25,
+        "low_coverage_sentences": 18
+      }
+    }
+  ]
+}

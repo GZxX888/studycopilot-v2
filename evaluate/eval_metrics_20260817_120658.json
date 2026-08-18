@@ -1,0 +1,82 @@
+{
+  "total": 31,
+  "should_answer": 16,
+  "should_refuse": 15,
+  "actually_refused": 12,
+  "out_of_scope": {
+    "total": 15,
+    "refused": 7,
+    "refusal_rate": 0.4666666666666667,
+    "by_tier": {
+      "easy": {
+        "total": 3,
+        "refused": 3,
+        "refusal_rate": 1.0
+      },
+      "medium": {
+        "total": 8,
+        "refused": 3,
+        "refusal_rate": 0.375
+      },
+      "hard": {
+        "total": 4,
+        "refused": 1,
+        "refusal_rate": 0.25
+      }
+    }
+  },
+  "by_lang": {
+    "en": {
+      "total": 29,
+      "correct": 17,
+      "accuracy": 0.5862068965517241
+    },
+    "zh": {
+      "total": 2,
+      "correct": 1,
+      "accuracy": 0.5
+    }
+  },
+  "refusal": {
+    "recall": 0.4666666666666667,
+    "precision": 0.5833333333333334,
+    "false_refusal_rate": 0.3125,
+    "accuracy": 0.5806451612903226,
+    "confusion_matrix": {
+      "tp": 7,
+      "tn": 11,
+      "fp": 5,
+      "fn": 8
+    }
+  },
+  "retrieval": {
+    "avg_docs_found": 5.645161290322581,
+    "avg_queries_used": 2.806451612903226,
+    "success_rate": 0.9032258064516129
+  },
+  "quality": {
+    "avg_evidence_score": 75.26315789473684,
+    "answered_count": 19
+  },
+  "routing": {
+    "RAG": 28,
+    "NO_RAG": 3
+  },
+  "by_type": {
+    "in_scope": {
+      "total": 15,
+      "correct": 10,
+      "accuracy": 0.6666666666666666
+    },
+    "out_of_scope": {
+      "total": 15,
+      "correct": 7,
+      "accuracy": 0.4666666666666667
+    },
+    "ambiguous": {
+      "total": 1,
+      "correct": 1,
+      "accuracy": 1.0
+    }
+  }
+}

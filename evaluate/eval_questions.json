@@ -97,27 +97,161 @@
     "should_answer": true,
     "expected_refusal": false
   },
-
   {
-    "id": "Q15",
-    "type": "out_of_scope",
-    "question": "What is the architecture of the ResNet-50 model discussed in the lecture slides?",
-    "should_answer": false,
-    "expected_refusal": true
+    "id": "Q31",
+    "type": "in_scope",
+    "lang": "zh",
+    "question": "感知机的决策边界是什么？它的几何形状是怎样的？",
+    "should_answer": true,
+    "expected_refusal": false,
+    "note": "跨语言测试：中文提问，英文语料。perceptron/decision boundary 已验证在库（218/41 次命中）"
   },
 
   {
     "id": "Q16",
     "type": "out_of_scope",
+    "tier": "easy",
     "question": "Who won the FIFA World Cup in 2022?",
     "should_answer": false,
-    "expected_refusal": true
+    "expected_refusal": true,
+    "note": "易档：完全无关领域"
   },
+  {
+    "id": "Q18",
+    "type": "out_of_scope",
+    "tier": "easy",
+    "question": "What is the capital of France?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "易档：完全无关领域"
+  },
+  {
+    "id": "Q19",
+    "type": "out_of_scope",
+    "tier": "easy",
+    "question": "Which country hosted the 2024 Summer Olympic Games?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "易档：完全无关领域"
+  },
+
+  {
+    "id": "Q15",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "What is the architecture of the ResNet-50 model discussed in the lecture slides?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：resnet 语料命中 0 次。2026-08-16 运行中系统给了 82 分并作答，已知失败案例"
+  },
+  {
+    "id": "Q20",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "How does dropout regularization prevent overfitting in neural networks?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：dropout 语料命中 0 次"
+  },
+  {
+    "id": "Q21",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "What is batch normalization and why is it applied between layers?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：batch normalization 语料命中 0 次"
+  },
+  {
+    "id": "Q22",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "How does the self-attention mechanism in BERT compute attention weights?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：self-attention / bert 均命中 0 次（注意 transformer 一词在库中出现过 4 次，属于干扰项）"
+  },
+  {
+    "id": "Q23",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "How does a support vector machine find the optimal separating hyperplane?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：svm / support vector machine 命中 0 次。但 decision boundary / 分类 是库内主题，检索会返回强相关内容"
+  },
+  {
+    "id": "Q24",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "What is an autoencoder and how is it trained?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：autoencoder 命中 0 次"
+  },
+  {
+    "id": "Q25",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "question": "How do the generator and discriminator compete during GAN training?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档：gan 命中 0 次"
+  },
+  {
+    "id": "Q30",
+    "type": "out_of_scope",
+    "tier": "medium",
+    "lang": "zh",
+    "question": "课程里讲的随机森林算法是如何进行特征选择的？",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "中档 + 跨语言：random forest / decision tree 命中 0 次。测中文提问下的拒答能力"
+  },
+
+  {
+    "id": "Q26",
+    "type": "out_of_scope",
+    "tier": "hard",
+    "question": "How is SLAM used to build a map while simultaneously localizing the robot?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "难档：slam 命中 0 次，但 localization(3) / lidar(37) / odometry(2) 在库，检索必然返回强相关的机器人内容"
+  },
+  {
+    "id": "Q27",
+    "type": "out_of_scope",
+    "tier": "hard",
+    "question": "Explain the RRT path planning algorithm covered in the robotics lectures.",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "难档：rrt / path planning 命中 0 次，但 ME5413 机器人课件在库，主题高度邻近"
+  },
+  {
+    "id": "Q28",
+    "type": "out_of_scope",
+    "tier": "hard",
+    "question": "What percentage of the final grade comes from the exam in this course?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "难档：课务元信息。exam / grading / midterm / syllabus 全部命中 0 次（注意 example 一词大量存在，是子串干扰项）"
+  },
+  {
+    "id": "Q29",
+    "type": "out_of_scope",
+    "tier": "hard",
+    "question": "What is shown on page 200 of the EE5904 Lecture 02 slides?",
+    "should_answer": false,
+    "expected_refusal": true,
+    "note": "难档：EE5904_lecture_02.pdf 共 182 页，第 200 页不存在。测对不存在页码的引用是否会被编造"
+  },
+
   {
     "id": "Q17",
     "type": "ambiguous",
     "question": "Explain backpropagation derivation in detail with full math steps.",
     "should_answer": true,
-    "expected_refusal": false
+    "expected_refusal": false,
+    "note": "backpropagation 在库(26次)，但公式在 PDF 中是图片非文本，纯文本管线可能无法给出完整推导"
   }
 ]
