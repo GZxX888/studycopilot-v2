@@ -16,6 +16,12 @@
 
 *上：本次实际执行的三条检索 query（原问题 / 加课程上下文的改写 / 关键词化）。下：完整来源列表，标注文件名与页码。*
 
+![Abstention when evidence is insufficient](docs/ui-abstain.png)
+
+*The same system asked about a topic the slides never cover — `dropout` has zero hits across all 584 chunks. The evidence gate blocks generation, the reply opens with **"Not enough evidence in your notes to answer confidently"**, and the general knowledge that follows is explicitly flagged as coming from outside the notes. No citations are fabricated.*
+
+*同一系统被问到讲义完全未覆盖的主题 —— `dropout` 在 584 个 chunk 中零命中。证据门阻断生成，回答以「笔记中证据不足」开头，其后补充的通用知识明确标注为笔记之外的来源，且不伪造任何引用。*
+
 ---
 
 # ======= ENGLISH VERSION =======
