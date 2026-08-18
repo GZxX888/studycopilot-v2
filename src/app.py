@@ -92,7 +92,7 @@ if prompt:
     result = None  # ✅ 先定义，避免异常后引用不到
 
     with st.chat_message("assistant"):
-        with st.spinner("Agent → Retrieve → Evidence Gate → Answer..."):
+        with st.spinner("🤖 Agent Processing: Route → Retrieve → Gate → Generate → Verify..."):
             try:
                 result = st.session_state.agent.answer(prompt)
                 st.markdown(result["final"])
@@ -105,25 +105,44 @@ if prompt:
                 st.stop()  # ✅ 不要 raise，让应用继续活着
 
         if result is not None:
-            with st.expander("Debug"):
-                st.write(f"**fallback:** {result.get('fallback', True)}")
-                st.write(f"**route:** {result.get('route')}")
-                st.write(f"**docs_found:** {result.get('docs_found')}")
+            with st.expander("🔍 Debug Info"):
+                # 基本信息
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Route", result.get('route', 'N/A'))
+                with col2:
+                    st.metric("Docs Found", result.get('docs_found', 0))
+                with col3:
+                    fallback_status = "Yes" if result.get('fallback', True) else "No"
+                    st.metric("Fallback", fallback_status)
 
-                # ✅ 新增：queries_used
+                # 分数指标（Gate 2 证据打分）
+                # 自验证已在 config 里关闭，verification_score 为 None，故不展示
+                st.divider()
+                st.subheader("📊 Quality Scores")
+                evidence_score = result.get("evidence_score") or 0
+                st.progress(evidence_score / 100, text=f"Evidence Score: {evidence_score}/100")
+
+                # queries_used
                 if result.get("queries_used"):
-                    st.write("**queries_used:**")
-                    for q in result["queries_used"]:
+                    st.divider()
+                    st.subheader("🔎 Queries Used")
+                    for q in result["queries_used"][:10]:  # 限制显示数量
                         st.write(f"- {q}")
+                    if len(result["queries_used"]) > 10:
+                        st.write(f"... and {len(result['queries_used']) - 10} more")
 
-                # ✅ 新增：planner/debug steps
-                if result.get("debug"):
-                    st.write("**planner debug (raw):**")
-                    for line in result["debug"]:
-                        st.write(line)
-
-                # 你原本的 citations 保留
+                # citations
                 if result.get("citations"):
-                    st.write("**citations:**")
+                    st.divider()
+                    st.subheader("📚 Citations")
                     for c in result["citations"]:
                         st.write(c)
+
+                # planner/debug steps
+                if result.get("debug"):
+                    st.divider()
+                    st.subheader("🛠️ Debug Log")
+                    with st.expander("Show detailed debug log"):
+                        for line in result["debug"]:
+                            st.text(line)

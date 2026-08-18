@@ -63,7 +63,41 @@ def question_complexity_level(question: str) -> int:
 
 
 # ============================================================
-# 3) Hybrid Retrieval Core
+# 3) Quick Retriever (轻量预检索，用于 Post-Retrieval Routing)
+# ============================================================
+
+def build_quick_retriever(cfg: RAGConfig):
+    """
+    轻量级预检索，只用向量检索，不做 rewrite/refine/rerank
+    用于 Gate 1: 快速判断是否有相关文档
+    """
+    embeddings = HuggingFaceEmbeddings(
+        model_name=cfg.embedding_model,
+        encode_kwargs={"normalize_embeddings": True},
+    )
+
+    vectordb = Chroma(
+        persist_directory=str(cfg.vectordb_dir),
+        embedding_function=embeddings,
+        collection_name="studycopilot",
+    )
+
+    quick_k = getattr(cfg, "quick_retrieve_k", 2)
+
+    def quick_retrieve(query: str) -> List[Document]:
+        """快速检索 top-k 文档，不做任何处理"""
+        try:
+            retriever = vectordb.as_retriever(search_kwargs={"k": quick_k})
+            docs = retriever.invoke(query)
+            return docs
+        except Exception:
+            return []
+
+    return quick_retrieve
+
+
+# ============================================================
+# 4) Hybrid Retrieval Core (强检索)
 # ============================================================
 
 def build_strong_retriever(cfg: RAGConfig):
@@ -108,7 +142,11 @@ def build_strong_retriever(cfg: RAGConfig):
     ]
     bm25 = BM25Okapi(tokenized_corpus)
 
-    llm = OllamaLLM(model=cfg.llm_model, temperature=0)
+    llm = OllamaLLM(
+        model=cfg.llm_model,
+        temperature=0,
+        base_url="http://127.0.0.1:11434"
+    )
 
     # ✅ NEW: build rewrite + refine chains
     rewrite_chain = build_query_rewrite_chain(llm)
